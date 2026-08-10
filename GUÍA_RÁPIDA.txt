@@ -1,0 +1,90 @@
+==========================================
+  🤖 ESKMC MEDIA BOT - GUÍA RÁPIDA
+==========================================
+
+📋 REQUISITOS PREVIOS
+------------------------------------------
+1. Tener Python 3.10 o superior instalado
+   Descarga: https://python.org/downloads
+
+2. Tener un bot creado en Discord Developer Portal
+   Portal: https://discord.com/developers/applications
+
+3. Tener activado el "Modo Desarrollador" en Discord
+   Ajustes > Avanzado > Modo Desarrollador
+
+🚀 INSTALACIÓN (Windows)
+------------------------------------------
+1. Extrae todos los archivos en una carpeta
+2. Doble click en: instalar.bat
+3. Sigue las instrucciones en pantalla
+4. Edita el archivo .env con tus datos
+5. Doble click en: INICIAR.bat
+
+🚀 INSTALACIÓN (Linux / Mac)
+------------------------------------------
+1. Abre terminal en la carpeta del bot
+2. Ejecuta: chmod +x install.sh iniciar.sh
+3. Ejecuta: ./install.sh
+4. Edita el archivo .env con tus datos
+5. Ejecuta: ./iniciar.sh
+
+🔧 CONFIGURACIÓN DEL BOT EN DISCORD
+------------------------------------------
+1. Ve a https://discord.com/developers/applications
+2. Crea una aplicación nueva (o usa una existente)
+3. Ve a la pestaña "Bot" y haz click en "Add Bot"
+4. Copia el TOKEN y pégalo en DISCORD_TOKEN del .env
+5. Activa estos INTENTS (muy importante):
+   ✅ Presence Intent
+   ✅ Server Members Intent
+   ✅ Message Content Intent
+6. Ve a "OAuth2" > "URL Generator"
+7. Selecciona:
+   - Scopes: bot, applications.commands
+   - Bot Permissions: Administrator
+8. Copia la URL generada, ábrela en tu navegador
+9. Invita el bot a tu servidor
+
+📋 OBTENER IDs DE DISCORD
+------------------------------------------
+Con el Modo Desarrollador activado:
+- ID del servidor: Click derecho en el nombre del servidor > Copiar ID
+- ID del canal: Click derecho en el canal > Copiar ID
+- ID del rol: Click derecho en el rol (en Ajustes > Roles) > Copiar ID
+
+⚙️ COMANDO INICIAL
+------------------------------------------
+Una vez el bot esté online, un administrador debe ejecutar:
+   /setup-media
+
+Esto creará automáticamente todas las categorías y canales.
+
+❓ PROBLEMAS COMUNES
+------------------------------------------
+❌ "Python no encontrado"
+   → Reinstala Python marcando "Add Python to PATH"
+
+❌ "pip no encontrado"
+   → Ejecuta: python -m ensurepip --upgrade
+
+❌ "No module named discord"
+   → El entorno virtual no se activó. Ejecuta instalar.bat de nuevo.
+
+❌ Los comandos no aparecen en Discord
+   → Pueden tardar hasta 1 hora en sincronizarse.
+   → Asegúrate de invitar el bot con el scope "applications.commands"
+
+❌ "Missing Access" o permisos
+   → El bot necesita permiso de Administrador para /setup-media
+   → Después del setup puedes reducir los permisos si lo deseas
+
+📞 SOPORTE
+------------------------------------------
+Si tienes problemas, revisa:
+1. Que el .env esté correctamente configurado
+2. Que el bot tenga los 3 INTENTS activados
+3. Que el bot tenga permisos de Administrador en el servidor
+4. Los logs de error en la consola
+
+==========================================

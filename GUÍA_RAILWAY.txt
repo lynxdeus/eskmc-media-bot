@@ -1,0 +1,160 @@
+==========================================
+   GUIA RAILWAY - ESKMC MEDIA BOT
+==========================================
+
+IMPORTANTE: Railway te da $5 USD de credito
+mensual gratis. Con eso rinde para un bot de
+Discord 24/7 sin problemas.
+
+==========================================
+   PASO 1: SUBIR A GITHUB
+==========================================
+
+1. Ve a https://github.com y crea una cuenta
+2. Clic en el boton VERDE "+" arriba a la derecha
+3. Selecciona "New repository"
+4. Ponle nombre: eskmc-media-bot
+5. Dejalo en Publico (o Privado si prefieres)
+6. Clic en "Create repository"
+
+7. En tu PC, abre CMD o PowerShell en la carpeta del bot:
+   (Shift + clic derecho en la carpeta -> Abrir PowerShell aqui)
+
+8. Ejecuta estos comandos uno por uno:
+
+   git init
+   git add .
+   git commit -m "Primer commit"
+   git branch -M main
+   git remote add origin https://github.com/TU_USUARIO/eskmc-media-bot.git
+   git push -u origin main
+
+   (Reemplaza TU_USUARIO con tu nombre de usuario de GitHub)
+
+==========================================
+   PASO 2: CREAR CUENTA EN RAILWAY
+==========================================
+
+1. Ve a https://railway.app
+2. Clic en "Start a New Project"
+3. Selecciona "Deploy from GitHub repo"
+4. Logueate con tu cuenta de GitHub
+5. Autoriza a Railway para acceder a tus repos
+6. Selecciona el repositorio "eskmc-media-bot"
+7. Clic en "Deploy"
+
+==========================================
+   PASO 3: CONFIGURAR VARIABLES
+==========================================
+
+1. En el panel de Railway, selecciona tu proyecto
+2. Ve a la pestana "Variables"
+3. Agrega UNA POR UNA estas variables:
+
+   Nombre: DISCORD_TOKEN
+   Valor: tu_token_aqui
+
+   Nombre: GUILD_ID
+   Valor: 123456789012345678
+
+   Nombre: MEDIA_MANAGER_ROLE_ID
+   Valor: 123456789012345678
+
+   Nombre: MEDIA_STAFF_ROLE_ID
+   Valor: 123456789012345678
+
+   Nombre: LOG_CHANNEL_ID
+   Valor: 123456789012345678
+
+   Nombre: BOT_PREFIX
+   Valor: /
+
+   Nombre: DATABASE_PATH
+   Valor: data/eskmc_media.db
+
+   Nombre: EMBED_COLOR
+   Valor: 0x5865F2
+
+4. Clic en "Deploy" o espera a que se redeploye solo
+
+==========================================
+   PASO 4: VERIFICAR QUE ESTA ONLINE
+==========================================
+
+1. Ve a la pestana "Deployments" o "Logs" en Railway
+2. Deberias ver:
+    [OK] Bot conectado como EskMC#XXXX
+    [OK] En 1 servidor(es)
+    [OK] X modulos cargados.
+    [OK] X comandos slash sincronizados
+
+3. Si ves errores, revisa que las Variables esten bien escritas
+
+==========================================
+   PASO 5: BASE DE DATOS PERSISTENTE
+==========================================
+
+Railway reinicia el servidor cada cierto tiempo.
+Para que la base de datos NO se borre:
+
+Opcion A (Recomendada): Agregar un Volumen
+1. En Railway, ve a "Volumes" o "Add Volume"
+2. Crea un volumen y montalo en /app/data
+3. La base de datos se guardara ahi y persistira
+
+Opcion B: Usar Railway Database (MySQL/PostgreSQL)
+1. En tu proyecto Railway, clic "New"
+2. Selecciona "Database" -> "Add PostgreSQL" o "Add MySQL"
+3. Modifica database.py para conectar a esa DB
+   (Esto requiere cambiar el codigo, solo si sabes SQL)
+
+Para empezar, la Opcion A (Volumen) es la mas facil.
+
+==========================================
+   COMANDOS GIT UTILES
+==========================================
+
+Si haces cambios en el bot y quieres actualizarlo:
+
+   git add .
+   git commit -m "Descripcion del cambio"
+   git push origin main
+
+Railway detectara el push y redeployeara automaticamente.
+
+==========================================
+   SOLUCION DE PROBLEMAS
+==========================================
+
+[ERROR] "ModuleNotFoundError: No module named 'discord'"
+  -> Railway no instalo las dependencias. Ve a Settings ->
+     Nixpacks y asegurate que lea requirements.txt
+
+[ERROR] "DISCORD_TOKEN invalid"
+  -> Revisa que el token este completo y sin espacios
+
+[ERROR] "Permission denied"
+  -> El bot no tiene permisos de Administrador en Discord.
+     Reinvitalo con el link de OAuth2 con permiso Admin.
+
+[ERROR] "Database is locked" o "unable to open database"
+  -> Crea un Volumen en Railway y montalo en /app/data
+
+[ERROR] Los comandos slash no aparecen
+  -> Espera 1 minuto despues del deploy. Si no, reinicia
+     el servicio en Railway (boton Restart).
+
+==========================================
+   COSTOS
+==========================================
+
+- Primeros $5 USD mensuales: GRATIS
+- Si consumes mas de $5: se cobra el excedente
+- Un bot basico de Discord consume aprox $2-3/mes
+- Puedes ver tu uso en: Railway Dashboard -> Billing
+
+Para evitar cargos inesperados:
+1. Ve a Settings -> Billing -> Spending Limit
+2. Pon un limite de $5 o $10 maximo
+
+==========================================
